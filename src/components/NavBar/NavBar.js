@@ -5,8 +5,8 @@ export default {
         return {
             navItems: [
                 { name: 'Home', link: '/' },
-                { name: 'About', link: '/about' },
-                { name: 'Contact', link: '/contact' },
+                { name: 'Admin', link: '/admin' },
+                { name: 'Shop', link: '/shop' },
             ],
         };
     }
