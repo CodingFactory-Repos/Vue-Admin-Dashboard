@@ -1,6 +1,5 @@
 export default ({
-
-  name: 'ShopView',
+    name: "ProductViewController",
 
     data() {
         return {
