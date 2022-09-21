@@ -1,4 +1,3 @@
-
-<template src="ProductComponent.html"></template>
-<script src="ProductComponent.ts" lang="ts"></script>
+<template src="ProductComponent.vue"></template>
+<script src="ProductComponent.ts" lang="js"></script>
 <style src="ProductComponent.scss" lang="scss"></style>
