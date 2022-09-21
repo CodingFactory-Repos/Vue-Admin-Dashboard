@@ -1,14 +1,17 @@
+import axios from "axios";
+
 export default ({
   name: 'AdminView',
     data() {
         return {
-            email: '',
-            password : ''
+            products: []
         }
     },
-    methods:{
-        form() {
-            console.log(this.password)
-        }
+
+    mounted() {
+      axios.get('http://10.57.29.194:3000/products')
+        .then(response => {
+            this.products = response.data
+        })
     }
 });
