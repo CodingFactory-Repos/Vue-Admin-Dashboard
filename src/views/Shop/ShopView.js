@@ -1,4 +1,4 @@
-import ProductComponents from './../../components/Product/ProductComponents';
+import ProductComponents from './../../components/Product/ProductComponents.vue';
 
 export default ({
     components: {
