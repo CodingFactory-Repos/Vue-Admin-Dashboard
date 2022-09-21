@@ -1,14 +1,18 @@
-import ProductComponents from './../../components/Product/ProductComponents.vue';
+import axios from "axios";
 
 export default ({
-    components: {
-        ProductComponents,
-    },
   name: 'ShopView',
     data() {
         return {
-            msg: 'and welcome to Thomas the Train'
+            products: []
         }
     },
+
+    mounted() {
+        axios.get('http://10.57.29.194:3000/products')
+            .then(response => {
+                this.products = response.data
+            });
+    }
 
 });
