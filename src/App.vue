@@ -1,5 +1,6 @@
 <template>
   <nav>
+    //Test
     // Creating a link to the home, admin, and shop pages.
     <router-link to="/home"></router-link>
     <router-link to="/admin"></router-link>
