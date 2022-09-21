@@ -1,4 +1,6 @@
 <div class="flex justify-center">
+
+
     <div v-for="product in products" class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
             <img class="p-8 rounded-t-lg" :src="require('@/assets/products/' + product.image)" alt="product image">
@@ -21,3 +23,5 @@
         </div>
     </div>
 </div>
+<SwitchComponents />
+

@@ -1,4 +1,6 @@
 import axios from "axios";
+import SwitchComponents from "@/components/Switcher/SwitchComponents.vue"
+
 
 export default ({
   name: 'ShopView',
@@ -6,6 +8,9 @@ export default ({
         return {
             products: []
         }
+    },
+    components: {
+        SwitchComponents
     },
 
     mounted() {
