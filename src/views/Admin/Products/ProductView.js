@@ -1,13 +1,18 @@
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
+import ProductFormComponent from "@/components/Form/AddProductForm/ProductFormComponent.vue";
 
 export default ({
     name: 'ProductView',
+    components:{
+        ProductFormComponent
+    },
 
     data() {
         return {
             products: [],
             selectProduct: [],
+            showForm: false,
             isNameSelected: true,
             isPriceSelected: false,
             isQuantitySelected: false,
@@ -69,6 +74,9 @@ export default ({
             this.isNameSelected = false;
             this.isQuantitySelected = false;
             this.isActionSelected = true;
+        },
+        addProduct(data){
+            this.productStore.AddProduct(data)
         }
 
     },
