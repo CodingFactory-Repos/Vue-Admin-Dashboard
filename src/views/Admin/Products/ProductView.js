@@ -13,12 +13,6 @@ export default ({
             products: [],
             selectProduct: [],
             showForm: false,
-            isNameSelected: true,
-            isPriceSelected: false,
-            isQuantitySelected: false,
-            isActionSelected:false,
-
-
         }
     },
 
@@ -48,35 +42,39 @@ export default ({
             this.productStore.deleteProduct(this.selectProduct);
             this.selectProduct = [];
         },
+
         ifNameOrder(){
-            this.isPriceSelected = false;
-            this.isNameSelected = true;
-            this.isQuantitySelected = false;
-            this.isActionSelected = false;
+            this.products.sort((a, b) => (a.name > b.name) ? 1 : -1)
         },
         ifPriceOrder(){
-            this.isPriceSelected = true;
-            this.isNameSelected = false;
-            this.isQuantitySelected = false;
-            this.isActionSelected = false;
-
-
-
+            this.products.sort((a, b) => (a.price > b.price) ? 1 : -1)
         },
         ifQuantityOrder(){
-            this.isPriceSelected = false;
-            this.isNameSelected = false;
-            this.isQuantitySelected = true;
-            this.isActionSelected = false;
+            this.products.sort((a, b) => (a.stock > b.stock) ? 1 : -1)
         },
         ifActionOrder(){
-            this.isPriceSelected = false;
-            this.isNameSelected = false;
-            this.isQuantitySelected = false;
-            this.isActionSelected = true;
+            this.products.sort((a, b) => (a.id > b.id) ? 1 : -1)
         },
+
+        selectAllCheckBox(){
+            let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+
+            if (this.selectProduct.length === this.products.length){
+                this.selectProduct = [];
+
+                checkBoxes.forEach(checkBox => checkBox.checked = false);
+            } else {
+                this.selectProduct = [];
+                this.products.forEach(product => this.selectProduct.push(product.id));
+
+                checkBoxes.forEach(checkBox => checkBox.checked = true);
+            }
+        },
+
         addProduct(data){
             this.productStore.AddProduct(data)
+
+            this.products.push(data)
         }
 
     },
