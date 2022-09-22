@@ -1,3 +1,3 @@
 <template src="./ShopView.html"></template>
-<script src="./ShopView.ts" lang="ts"></script>
+<script src="./ShopView.js" lang="ts"></script>
 <style src="./ShopView.scss" lang="scss"></style>

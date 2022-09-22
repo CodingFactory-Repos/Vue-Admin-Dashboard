@@ -1,13 +1,25 @@
 <template>
-  <nav>
-    // Creating a link to the home, admin, and shop pages.
-    <router-link to="/home"></router-link>
-    <router-link to="/admin"></router-link>
-    <router-link to="/shop"></router-link>
-
-  </nav>
-  <router-view/>
+  <div class="flex min-h-screen flex-col justify-between">
+    <NavBar />
+    <div class="flex-grow">
+      <router-view />
+    </div>
+    <Footer />
+  </div>
 </template>
+
+<script>
+import NavBar from './components/NavBar/NavBarComponents.vue';
+import Footer from './components/Footer/FooterComponents.vue';
+
+export default {
+  name: 'App',
+  components: {
+    NavBar,
+    Footer
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

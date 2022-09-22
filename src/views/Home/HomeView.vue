@@ -1,3 +1,3 @@
 <template src="./HomeView.html"></template>
-<script src="./HomeView.ts" lang="ts"></script>
+<script src="./HomeView.js" lang="ts"></script>
 <style src="./HomeView.scss" lang="scss"></style>
