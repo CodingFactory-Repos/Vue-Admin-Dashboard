@@ -1,7 +1,5 @@
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
-import ProductFormComponent from "@/components/Form/AddProductForm/ProductFormComponent.vue";
-
 
 export default ({
     name: 'ProductView',
@@ -10,12 +8,13 @@ export default ({
         return {
             products: [],
             selectProduct: [],
-            showForm : false
+            isNameSelected: true,
+            isPriceSelected: false,
+            isQuantitySelected: false,
+            isActionSelected:false,
+
 
         }
-    },
-    components:{
-        ProductFormComponent
     },
 
     /* Mapping the productStore to the component. */
@@ -40,13 +39,38 @@ export default ({
          */
         deleteP() {
             this.products = this.products.filter(product => !this.selectProduct.includes(product.id))
+
             this.productStore.deleteProduct(this.selectProduct);
             this.selectProduct = [];
         },
-        addProduct(data){
-            console.log(data.file)
-            this.productStore.AddProduct(data)
+        ifNameOrder(){
+            this.isPriceSelected = false;
+            this.isNameSelected = true;
+            this.isQuantitySelected = false;
+            this.isActionSelected = false;
+        },
+        ifPriceOrder(){
+            this.isPriceSelected = true;
+            this.isNameSelected = false;
+            this.isQuantitySelected = false;
+            this.isActionSelected = false;
+
+
+
+        },
+        ifQuantityOrder(){
+            this.isPriceSelected = false;
+            this.isNameSelected = false;
+            this.isQuantitySelected = true;
+            this.isActionSelected = false;
+        },
+        ifActionOrder(){
+            this.isPriceSelected = false;
+            this.isNameSelected = false;
+            this.isQuantitySelected = false;
+            this.isActionSelected = true;
         }
+
     },
 
     /* Calling the getAllProduct function in the productStore and then setting the products array to the products array in
