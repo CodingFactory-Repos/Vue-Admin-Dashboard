@@ -1,13 +1,15 @@
 import axios from "axios";
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
+import {indexOf} from "core-js/internals/array-includes";
 
 export default ({
   name: 'AdminView',
     data() {
         return {
             products: [],
-            selectProduct: []
+            selectProduct: [],
+
         }
     },
     computed: {
@@ -28,13 +30,20 @@ export default ({
             console.log(this.selectProduct)
         },
         deleteP(){
-            this.selectProduct.forEach((res) => {
-                const index = this.products.indexOf(res);
+            for(let i = 0; i< this.selectProduct.length; i++){
 
-                if (index > -1) { // only splice array when item is found
-                    this.products.splice(index, 1); // 2nd parameter means remove one item only
-                }
-            })
+               this.products.forEach(object =>
+               {
+                   if(object.id === this.selectProduct[i]){
+                       let index = this.products.indexOf(object)
+                       this.products.splice(index, 1);
+
+                   }
+               })
+            }
+
+
+
 
             /*this.productStore.deleteProduct(this.selectProduct);*/
         }
