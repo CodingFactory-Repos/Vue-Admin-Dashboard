@@ -41,23 +41,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="product in products"
+            <tr v-for="(product,index) in products" :key="index"
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="p-4 w-4">
                     <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
+                        <input id="checkbox-table-search-1" @click="chooseDeleteProduct(product.id,$event)"
+                               :value="index" type="checkbox"
                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
-                <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
+                <td scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="w-10 h-10 rounded-full" :src="require('@/assets/products/' + product.image)"
                          alt="Jese image">
                     <div class="pl-3">
                         <div class="text-base font-semibold">{{ product.name }}</div>
                         <div class="font-normal text-gray-500">{{ product.description.substring(0, 30) }}...</div>
                     </div>
-                </th>
+                </td>
                 <td class="py-4 px-6">
                     {{ product.price }} €
                 </td>
@@ -69,10 +70,16 @@
                     </div>
                 </td>
                 <td class="py-4 px-6">
-                    <router-link :to="'./products/' + product.id" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit product</router-link>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                 </td>
             </tr>
             </tbody>
+
         </table>
+
+        <button v-on:click="deleteP()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            DELETE
+        </button>
+
     </div>
 </div>
