@@ -1,2 +1,4 @@
-<ProductCard v-for="product in products" :key="product.id" :product="product" />
+<div class="flex flex-wrap justify-evenly">
+    <ProductCard class="my-5" v-for="product in products" :key="product.id" :product="product" />
+</div>
 <SwitchComponents/>
