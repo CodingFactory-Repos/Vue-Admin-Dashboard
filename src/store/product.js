@@ -25,7 +25,9 @@ export const useProductStore = defineStore('product', {
             //await axios.delete(this.url + id);
         },
         AddProduct(data){
-            axios.post(data).then(res => console.log(res))
+            if(data.file){
+                axios.post('http://10.57.29.25:8081/assets/products', data.file).then(res => console.log(res))
+            }
             console.log(data)
         }
     },

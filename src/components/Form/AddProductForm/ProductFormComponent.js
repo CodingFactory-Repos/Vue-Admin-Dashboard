@@ -7,23 +7,21 @@ export default {
             describe : '',
             price : 0,
             quantity : 0,
-            pathPicture : ''
+            picture : null
         };
     },
     methods:{
         addProduct(){
             let data = {
                 id : 0,
-                image : this.pathPicture,
+                image : this.picture.name,
                 name : this.name,
                 description : this.describe,
                 price : this.price,
                 stock : this.quantity
             }
 
-            this.$emit('add', data)
-
-            console.log(this.name + '  '+ this.describe + ' '+ this.pathPicture)
+            this.$emit('add', {data : data,file : this.picture})
         }
     }
 }

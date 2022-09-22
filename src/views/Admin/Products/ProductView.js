@@ -44,6 +44,7 @@ export default ({
             this.selectProduct = [];
         },
         addProduct(data){
+            console.log(data.file)
             this.productStore.AddProduct(data)
         }
     },
