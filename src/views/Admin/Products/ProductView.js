@@ -13,6 +13,7 @@ export default ({
             products: [],
             selectProduct: [],
             showForm: false,
+            modifiedProduct: [],
         }
     },
 
@@ -41,6 +42,11 @@ export default ({
 
             this.productStore.deleteProduct(this.selectProduct);
             this.selectProduct = [];
+        },
+
+        addP() {
+            this.showForm = !(this.modifiedProduct.length === 0 && this.showForm);
+            this.modifiedProduct = [];
         },
 
         ifNameOrder(){
@@ -73,8 +79,12 @@ export default ({
 
         addProduct(data){
             this.productStore.AddProduct(data)
-
             this.products.push(data)
+        },
+
+        modifyProduct(data){
+            this.modifiedProduct = data;
+            this.showForm = true;
         }
 
     },

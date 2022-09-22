@@ -1,6 +1,8 @@
 export default {
     name: 'ProductFormComponent',
 
+    props: ['product'],
+
     data() {
         return {
             name:'',
@@ -10,6 +12,15 @@ export default {
             urlPicture : ''
         };
     },
+
+    updated() {
+        this.name = this.product.name;
+        this.describe = this.product.description;
+        this.price = this.product.price;
+        this.quantity = this.product.stock;
+        this.urlPicture = this.product.image;
+    },
+
     methods:{
         addProduct(){
             let data = {
