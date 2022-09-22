@@ -3,6 +3,7 @@ export default {
 
     data() {
         return {
+            lastIndex:0,
             index:[
                 {
                     id: 1,
@@ -10,7 +11,7 @@ export default {
                 },
                 {
                     id: 2,
-                    isSelected:false,
+                    isSelected:true,
             },
                 {
                     id: 3,
@@ -23,6 +24,9 @@ export default {
         };
     },
     methods: {
+        setValueInClick(item){
+            return item.isSelected = false;
+        }
 
 }
 }
