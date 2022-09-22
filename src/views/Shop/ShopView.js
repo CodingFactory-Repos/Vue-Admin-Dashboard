@@ -17,17 +17,26 @@ export default ({
         this.productStore = useProductStore();
 
         return {
-            products: []
+            products: [],
+            pages: 0,
+            currentPage: 1,
         }
     },
     computed: {
         ...mapStores(useProductStore)
     },
 
+    methods: {
+        changePage(page) {
+            this.currentPage = page;
+            this.products = this.productStore.products.slice((this.currentPage - 1) * 6, this.currentPage * 6);
+        }
+    },
+
     async mounted() {
-
         await this.productStore.getAllProduct();
-        this.products = this.productStore.products
+        this.products = this.productStore.products.slice((this.currentPage - 1) * 6, this.currentPage * 6);
 
+        this.pages = Math.ceil(this.productStore.products.length / 6);
     },
 });
