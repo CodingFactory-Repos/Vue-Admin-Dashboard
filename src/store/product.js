@@ -5,7 +5,7 @@ export const useProductStore = defineStore('product', {
     state: () => {
         return{
             products: [],
-            url : 'http://10.57.29.194:3000/products'
+            url : 'https://opaque-five-trader.glitch.me/products'
         }
 
     },
