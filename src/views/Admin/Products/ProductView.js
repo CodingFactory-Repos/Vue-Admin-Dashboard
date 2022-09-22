@@ -13,7 +13,7 @@ export default ({
             products: [],
             selectProduct: [],
             showForm: false,
-            modifiedProduct: [],
+            modifiedProduct: {'id': 0, 'name': '', 'description': '', 'price': 0, 'stock': 0, 'image': ''}
         }
     },
 
@@ -46,7 +46,7 @@ export default ({
 
         addP() {
             this.showForm = !(this.modifiedProduct.length === 0 && this.showForm);
-            this.modifiedProduct = [];
+            this.modifiedProduct = {'id': 0, 'name': '', 'description': '', 'price': 0, 'stock': 0, 'image': ''};
         },
 
         ifNameOrder(){
@@ -77,9 +77,19 @@ export default ({
             }
         },
 
-        addProduct(data){
-            this.productStore.AddProduct(data)
-            this.products.push(data)
+        addProduct(data) {
+            // Verify if the product is already in the products array
+            let index = this.products.findIndex(product => product.id === data.id);
+
+            if (index === -1) {
+                this.productStore.AddProduct(data)
+                this.products.push(data)
+            } else {
+                this.productStore.UpdateProduct(data)
+                this.products[index] = data;
+            }
+
+            this.showForm = false;
         },
 
         modifyProduct(data){

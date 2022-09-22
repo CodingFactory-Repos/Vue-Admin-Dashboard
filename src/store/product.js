@@ -17,18 +17,17 @@ export const useProductStore = defineStore('product', {
 
             };
             await fetchData();
-            console.log(this.products)
         },
-        deleteProduct(id){
-            id.forEach(res => axios.delete(this.url + '/'+ res))
+        deleteProduct(id) {
+            id.forEach(res => axios.delete(this.url + '/' + res))
             id.forEach(res => console.log(this.url + '/' + res))
             //await axios.delete(this.url + id);
         },
-        AddProduct(data){
-                console.log(data)
-                axios.post(this.url, data).then(res => console.log(res))
-
-            console.log(data)
+        AddProduct(data) {
+            axios.post(this.url, data).then(res => console.log(res))
+        },
+        UpdateProduct(data) {
+            axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
         }
     },
 })

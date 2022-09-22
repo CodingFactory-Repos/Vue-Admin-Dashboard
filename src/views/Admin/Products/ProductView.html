@@ -78,11 +78,11 @@
                     </div>
                 </td>
                 <td class="py-4 px-6">
-                    <a href="#" @click="modifyProduct(product)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                    <a href="#" @click="modifyProduct(product)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit product</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-<ProductFormComponent v-show="showForm" @add="modifiedProduct" :product="modifiedProduct" />
+<ProductFormComponent v-show="showForm" @add="addProduct" :product="modifiedProduct" />
