@@ -7,21 +7,21 @@ export default {
             describe : '',
             price : 0,
             quantity : 0,
-            picture : null
+            urlPicture : ''
         };
     },
     methods:{
         addProduct(){
             let data = {
                 id : 0,
-                image : this.picture.name,
+                image : this.urlPicture,
                 name : this.name,
                 description : this.describe,
                 price : this.price,
                 stock : this.quantity
             }
 
-            this.$emit('add', {data : data,file : this.picture})
+            this.$emit('add', data)
         }
     }
 }
