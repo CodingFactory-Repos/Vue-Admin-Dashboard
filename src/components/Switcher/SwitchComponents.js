@@ -3,7 +3,8 @@ export default {
 
     data() {
         return {
-            lastIndex:0,
+
+            numIndex:0,
             index:[
                 {
                     id: 1,
@@ -24,8 +25,13 @@ export default {
         };
     },
     methods: {
-        setValueInClick(item){
-            return item.isSelected = false;
+        setValueInClick(item, index) {
+            this.elmnIndex =index[item.id-1];
+            item.isSelected = false;
+            item=this.elmnIndex
+            item.isSelected = true;
+            this.numIndex=item.id;
+            console.log(this.numIndex);
         }
 
 }
