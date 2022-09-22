@@ -1,5 +1,7 @@
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
+import ProductFormComponent from "@/components/Form/AddProductForm/ProductFormComponent.vue";
+
 
 export default ({
     name: 'ProductView',
@@ -8,8 +10,12 @@ export default ({
         return {
             products: [],
             selectProduct: [],
+            showForm : false
 
         }
+    },
+    components:{
+        ProductFormComponent
     },
 
     /* Mapping the productStore to the component. */
@@ -34,9 +40,11 @@ export default ({
          */
         deleteP() {
             this.products = this.products.filter(product => !this.selectProduct.includes(product.id))
-
             this.productStore.deleteProduct(this.selectProduct);
             this.selectProduct = [];
+        },
+        addProduct(data){
+            this.productStore.AddProduct(data)
         }
     },
 

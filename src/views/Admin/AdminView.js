@@ -4,7 +4,8 @@ export default ({
   name: 'AdminView',
 
     components: {
-        AdminSideBar
+        AdminSideBar,
+
     },
 
     data() {

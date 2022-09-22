@@ -1,13 +1,2 @@
-<template>
-
-</template>
-
-<script>
-export default {
-  name: "ProductFormComponent"
-}
-</script>
-
-<style scoped>
-
-</style>
+<template src="./ProductFormComponent.html"></template>
+<script  src="./ProductFormComponent.js" ></script>

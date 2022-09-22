@@ -25,7 +25,8 @@ export const useProductStore = defineStore('product', {
             //await axios.delete(this.url + id);
         },
         AddProduct(data){
-            axios.post(this.url,data).then()
+            axios.post(data).then(res => console.log(res))
+            console.log(data)
         }
     },
 })
