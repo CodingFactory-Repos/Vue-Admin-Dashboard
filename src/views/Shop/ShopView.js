@@ -13,8 +13,8 @@ export default ({
       ...mapStores(useProductStore)
     },
 
-    mounted() {
-      this.productStore.getAllProduct();
+   async mounted() {
+     await this.productStore.getAllProduct();
       this.products = this.productStore.products
 
 }
