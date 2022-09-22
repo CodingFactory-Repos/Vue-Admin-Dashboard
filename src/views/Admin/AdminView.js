@@ -1,17 +1,14 @@
-import axios from "axios";
+import AdminSideBar from "@/components/AdminSideBar/AdminSideBarComponents";
 
 export default ({
   name: 'AdminView',
-    data() {
-        return {
-            products: []
-        }
+
+    components: {
+        AdminSideBar
     },
 
-    mounted() {
-      axios.get('http://10.57.29.194:3000/products')
-        .then(response => {
-            this.products = response.data
-        })
-    }
+    data() {
+        // Redirect to /admin/products route
+        this.$router.push('/admin/products');
+    },
 });
