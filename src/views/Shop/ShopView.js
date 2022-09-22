@@ -1,26 +1,30 @@
 import axios from "axios";
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
+import ProductCard from "@/components/ProductCardComponents/ProductCardComponents";
 
 export default ({
-  name: 'ShopView',
+    name: 'ShopView',
+
+    components: {
+        ProductCard
+    },
+
     data() {
+        this.productStore = useProductStore();
+
         return {
             products: []
         }
     },
-    computed:{
-      ...mapStores(useProductStore)
+    computed: {
+        ...mapStores(useProductStore)
     },
 
-    mounted() {
-        axios.get('http://10.57.29.194:3000/products')
-            .then(response => {
-                this.products = response.data
-            });
-    },
-    beforeMount() {
-      this.productStore.getAllProduct();
-    }
+    async mounted() {
 
+        await this.productStore.getAllProduct();
+        this.products = this.productStore.products
+
+    },
 });

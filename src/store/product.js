@@ -9,8 +9,13 @@ export const useProductStore = defineStore('product', {
 
     },
     actions: {
-        getAllProduct(){
-            axios.get('http://10.57.29.194:3000/products').then(res => this.products = res.data)
+        async getAllProduct() {
+            const fetchData = async () => {
+                const datas = await axios.get('http://10.57.29.194:3000/products');
+                this.products = await datas.data;
+
+            };
+            await fetchData();
         }
     },
 })
