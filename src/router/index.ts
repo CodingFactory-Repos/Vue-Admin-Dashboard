@@ -15,6 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/admin',
     name: 'admin',
     component: AdminView,
+    redirect: '/admin/products',
     children: [
         {
           path: "products/:id?",
