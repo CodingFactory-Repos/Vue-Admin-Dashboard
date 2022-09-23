@@ -15,6 +15,35 @@
                        class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        placeholder="Search for users">
             </div>
+            <div>
+                <button type="button" @click="ifNameOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Name
+                </button>
+                <button type="button" @click="ifPriceOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Prix
+                </button>
+                <button type="button" @click="ifQuantityOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Quantité
+                </button>
+                <button type="button" @click="ifActionOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Action
+                </button>
+            </div>
+
+            <div>
+                <button @click="deleteP()" v-if="selectUser.length !== 0"
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-5">
+                    Supprimer ({{ selectUser.length }})
+                </button>
+                <button @click="addP()"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5">
+                    Ajouter
+                </button>
+            </div>
         </div>
 
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -22,7 +51,7 @@
             <tr>
                 <th scope="col" class="p-4">
                     <div class="flex items-center">
-                        <input id="checkbox-all-search" type="checkbox"
+                        <input id="checkbox-all-search" type="checkbox" @click="selectAllCheckBox()"
                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-all-search" class="sr-only">checkbox</label>
                     </div>
@@ -46,7 +75,8 @@
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="p-4 w-4">
                     <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
+                        <input id="checkbox-table-search-1" @click="chooseDeleteUser(user.id,$event)"
+                               :value="index" type="checkbox"
                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
@@ -63,10 +93,11 @@
                     {{ user.role }}
                 </td>
                 <td class="py-4 px-6">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                    <a href="#" @click="modifyUser(user)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+<UserFormComponent v-show="showForm" @add="addUser" :user="modifiedUser" />

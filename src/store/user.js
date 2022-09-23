@@ -1,13 +1,33 @@
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
-export const useCounterStore = defineStore('counter', {
+export const useUserStore = defineStore('user', {
     state: () => {
-        return { count: 0 }
+        return{
+            users: [],
+            url : 'https://opaque-five-trader.glitch.me/users'
+        }
+
     },
     actions: {
-        getUser() {
-            this.count++
-        },
+        async getAllUser() {
+            const fetchData = async () => {
+                const datas = await axios.get(this.url);
+                this.users = await datas.data;
 
+            };
+            await fetchData();
+        },
+        deleteUser(id) {
+            id.forEach(res => axios.delete(this.url + '/' + res))
+            id.forEach(res => console.log(this.url + '/' + res))
+            //await axios.delete(this.url + id);
+        },
+        AddUser(data) {
+            axios.post(this.url, data).then(res => console.log(res))
+        },
+        UpdateUser(data) {
+            axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
+        }
     },
 })

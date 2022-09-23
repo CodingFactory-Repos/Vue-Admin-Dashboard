@@ -17,6 +17,25 @@
             </div>
 
             <div>
+                <button type="button" @click="ifNameOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Name
+                </button>
+                <button type="button" @click="ifPriceOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Prix
+                </button>
+                <button type="button" @click="ifQuantityOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Quantité
+                </button>
+                <button type="button" @click="ifActionOrder()"
+                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Action
+                </button>
+            </div>
+
+            <div>
                 <button @click="deleteP()" v-if="selectProduct.length !== 0"
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-5">
                     Supprimer ({{ selectProduct.length }})
@@ -37,14 +56,18 @@
                         <label for="checkbox-all-search" class="sr-only">checkbox</label>
                     </div>
                 </th>
-                <button type="button" @click="ifNameOrder()" class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Name</button>
-                <button type="button" @click="ifPriceOrder()" class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Prix</button>
-                <button type="button" @click="ifQuantityOrder()" class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Quantité</button>
-                <button type="button" @click="ifActionOrder()" class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Action</button>
+                <th scope="col" class="py-3 px-6">
+                    Nom
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Prix
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Quantité
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Action
+                </th>
             </tr>
 
             </thead>

@@ -30,6 +30,10 @@ export default ({
         changePage(page) {
             this.currentPage = page;
             this.products = this.productStore.products.slice((this.currentPage - 1) * 6, this.currentPage * 6);
+        },
+
+        addToCart(product) {
+            console.log(product);
         }
     },
 
