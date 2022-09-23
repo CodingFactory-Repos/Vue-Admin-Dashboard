@@ -85,15 +85,18 @@ export default ({
     async mounted() {
         await this.orderStore.getAllOrder();
         this.orders = this.orderStore.orders
+
+        await this.userStore.getAllUser();
+        this.user = this.userStore.users
+
+        await this.productStore.getAllProduct();
+        this.listOrder = this.productStore.products
+
         this.orders.forEach(order => {
-         let user =   this.userStore.getUserById(order.client_id)
-          user.then(res => {
-              this.user = res.data
-             let ord = {
-                  id : order.id,
-                 name_client : this.user.name
-              }
-          })
-        })
+            order.client = this.user.find(user => user.id === order.client_id)
+            order.products.forEach(product => {
+                product.product = this.listOrder.find(listOrder => listOrder.id === product.product_id)
+            });
+        });
     },
 });
