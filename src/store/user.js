@@ -28,6 +28,18 @@ export const useUserStore = defineStore('user', {
         },
         UpdateUser(data) {
             axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
+        },
+
+        async checkLogin(email, password) {
+            await this.getAllUser();
+            let index = this.users.findIndex(user => user.email === email && user.password === password);
+
+            if (index !== -1) {
+                window.location.href = '/';
+                localStorage.setItem('token', JSON.stringify(this.users[index]));
+            } else {
+                alert('Wrong email or password')
+            }
         }
     },
 })

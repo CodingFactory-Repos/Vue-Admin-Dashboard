@@ -15,26 +15,27 @@
                        class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        placeholder="Search for users">
             </div>
-            <div>
-                <button type="button" @click="ifNameOrder()"
+            <div class="mt-1">
+                <button type="button" v-if="ifOrderOpen" @click="ifNameOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     Name
                 </button>
-                <button type="button" @click="ifPriceOrder()"
+                <button type="button" v-if="ifOrderOpen" @click="ifRoleOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Prix
+                    Rôle
                 </button>
-                <button type="button" @click="ifQuantityOrder()"
-                        class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Quantité
-                </button>
-                <button type="button" @click="ifActionOrder()"
+                <button type="button" v-if="ifOrderOpen" @click="ifActionOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     Action
                 </button>
+                <button type="button" @click="ifOrderOpen = !ifOrderOpen" :class="{'text-gray-900 bg-white border-gray-300': !ifOrderOpen, 'text-white bg-red-600 border-transparent': ifOrderOpen}"
+                        class=" ml-5 border focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    <!-- If order is open -->
+                    {{ ifOrderOpen ? 'X' : 'Trier' }}
+                </button>
             </div>
 
-            <div>
+            <div v-if="!ifOrderOpen">
                 <button @click="deleteP()" v-if="selectUser.length !== 0"
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-5">
                     Supprimer ({{ selectUser.length }})

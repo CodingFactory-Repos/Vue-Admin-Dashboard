@@ -4,6 +4,7 @@ import AdminView from '@/views/Admin/AdminView.vue'
 import ShopView from '@/views/Shop/ShopView.vue'
 import AdminProductView from '@/views/Admin/Products/ProductView.vue'
 import AdminUserView from '@/views/Admin/Users/UserView.vue'
+import LoginView from '@/views/Login/LoginView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -27,13 +28,18 @@ const routes: Array<RouteRecordRaw> = [
             name: "adminUsers",
             component: AdminUserView
         }
-      ]
+    ]
   },
-  {
-    path: '/shop',
-    name: 'shop',
-    component: ShopView
-  }
+    {
+        path: '/shop',
+        name: 'shop',
+        component: ShopView
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginView,
+    }
 ]
 
 const router = createRouter({

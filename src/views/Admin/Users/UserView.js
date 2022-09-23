@@ -15,6 +15,7 @@ export default ({
             users: [],
             selectUser: [],
             showForm: false,
+            ifOrderOpen: false,
             modifiedUser: {'id': 0, 'firstName': '', 'lastName': '', 'email': '', 'password': '', 'role': 'user'}
         }
     },
@@ -52,13 +53,10 @@ export default ({
         },
 
         ifNameOrder(){
-            this.users.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            this.users.sort((a, b) => (a.lastName > b.lastName) ? 1 : -1)
         },
-        ifPriceOrder(){
-            this.users.sort((a, b) => (a.price > b.price) ? 1 : -1)
-        },
-        ifQuantityOrder(){
-            this.users.sort((a, b) => (a.stock > b.stock) ? 1 : -1)
+        ifRoleOrder(){
+            this.users.sort((a, b) => (a.role > b.role) ? 1 : -1)
         },
         ifActionOrder(){
             this.users.sort((a, b) => (a.id > b.id) ? 1 : -1)
