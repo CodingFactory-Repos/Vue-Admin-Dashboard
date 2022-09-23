@@ -22,7 +22,6 @@ export default ({
             shopBar: [],
             pages: 0,
             currentPage: 1,
-
             totalprice:0,
             productlist : []
 
@@ -47,27 +46,25 @@ export default ({
 
             this.orderStore.AddOrder(this.shopBar)
             var i =0;
-            for (i;i<this.shopbar.length;i++){
+            for (i;i<this.shopBar.length;i++){
                 this.shopBar[i].price = this.totalprice + this.shopBar[i].price;
             }
 
-
-
-
             let productlist;
-        this.shopBar.forEach(product => {
+            this.shopBar.forEach(product => {
             let produ = {
                 product_id : product.id,
                 quantity : 1
             }
             this.productlist.push(produ)
+                console.log(this.products)
         })
 
 
 
             const data = {
                 id : 0,
-                products: [productlist],
+                products: this.productlist,
                 total_price : this.total_price,
                 client_id: 1
             }
