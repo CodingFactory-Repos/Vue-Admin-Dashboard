@@ -67,6 +67,7 @@ export default ({
             }
 
             this.orderStore.AddOrder(data)
+            this.shopBar.length = [];
         }
     },
 
