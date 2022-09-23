@@ -24,7 +24,7 @@ export const useOrderStore = defineStore('order', {
 
         },
         AddOrder(data) {
-            axios.post(this.url, data).then(res => console.log(res))
+            console.log(data)
         }
     },
 })
