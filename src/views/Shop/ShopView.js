@@ -2,15 +2,14 @@ import axios from "axios";
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
 import ProductCard from "@/components/ProductCardComponents/ProductCardComponents";
-import SwitchComponents from "@/components/Switcher/SwitchComponents.vue";
+import ShopSideBar from "@/components/ShopSideBar/ShopSideBar.vue";
 
 
 export default ({
     name: 'ShopView',
-
     components: {
-        ProductCard,
-        SwitchComponents
+        ShopSideBar,
+        ProductCard
     },
 
     data() {
@@ -18,6 +17,7 @@ export default ({
 
         return {
             products: [],
+            shopBar: [],
             pages: 0,
             currentPage: 1,
         }
@@ -33,7 +33,7 @@ export default ({
         },
 
         addToCart(product) {
-            console.log(product);
+            this.shopBar.push(product);
         }
     },
 

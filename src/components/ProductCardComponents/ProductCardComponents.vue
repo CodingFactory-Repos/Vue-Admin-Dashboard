@@ -12,7 +12,8 @@ export default {
 
   methods: {
     addToCart() {
-      this.$emit('add-to-cart', "Hello")
+      this.$emit('add-to-cart', this.product)
+      
     }
   }
 }
