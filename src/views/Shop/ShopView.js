@@ -22,6 +22,7 @@ export default ({
             shopBar: [],
             pages: 0,
             currentPage: 1,
+            totalprice:0,
         }
     },
     computed: {
@@ -41,6 +42,10 @@ export default ({
         },
         orderProduct(){
             this.orderStore.AddOrder(this.shopBar)
+            var i =0;
+            for (i;i<this.shopbar.length;i++){
+                this.shopBar[i].price = this.totalprice + this.shopBar[i].price;
+            }
         }
     },
 
