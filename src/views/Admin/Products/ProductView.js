@@ -13,6 +13,7 @@ export default ({
             products: [],
             selectProduct: [],
             showForm: false,
+            ifOrderOpen: false,
             modifiedProduct: {'id': 0, 'name': '', 'description': '', 'price': 0, 'stock': 0, 'image': ''}
         }
     },

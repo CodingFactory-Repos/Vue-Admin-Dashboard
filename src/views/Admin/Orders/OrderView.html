@@ -15,34 +15,25 @@
                        class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        placeholder="Search for users">
             </div>
-            <div class="mt-1">
-                <button type="button" v-if="ifOrderOpen" @click="ifNameOrder()"
+            <div>
+                <button type="button" @click="ifNameOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Name
+                    Product
                 </button>
-                <button type="button" v-if="ifOrderOpen" @click="ifRoleOrder()"
+                <button type="button" @click="ifPriceOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Rôle
+                    Total Price
                 </button>
-                <button type="button" v-if="ifOrderOpen" @click="ifActionOrder()"
+                <button type="button" @click="ifQuantityOrder()"
                         class=" ml-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    Action
-                </button>
-                <button type="button" @click="ifOrderOpen = !ifOrderOpen" :class="{'text-gray-900 bg-white border-gray-300': !ifOrderOpen, 'text-white bg-red-600 border-transparent': ifOrderOpen}"
-                        class=" ml-5 border focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                    <!-- If order is open -->
-                    {{ ifOrderOpen ? 'X' : 'Trier' }}
+                    ClientName
                 </button>
             </div>
 
-            <div v-if="!ifOrderOpen">
-                <button @click="deleteP()" v-if="selectUser.length !== 0"
+            <div>
+                <button @click="deleteP()" v-if="selectOrders.length !== 0"
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-5">
-                    Supprimer ({{ selectUser.length }})
-                </button>
-                <button @click="addP()"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5">
-                    Ajouter
+                    Supprimer ({{ selectOrders.length }})
                 </button>
             </div>
         </div>
@@ -58,47 +49,42 @@
                     </div>
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Name
+                    Produit
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Email
+                   Total Price
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Rôle
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Action
+                    Client Name
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="user in users"
+            <tr v-for="order in orders"
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="p-4 w-4">
                     <div class="flex items-center">
-                        <input id="checkbox-table-search-1" @click="chooseDeleteUser(user.id,$event)"
+                        <input id="checkbox-table-search-1" @click="chooseDeleteUser(order.id,$event)"
                                :value="index" type="checkbox"
                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
                 <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-                    <div class="pl-3">
-                        <div class="text-base font-semibold">{{ user.firstName }} {{ user.lastName }}</div>
-                    </div>
+                    <ul>
+                        <li v-for="product in order.products">
+                            {{ product.product.name }}
+                        </li>
+                    </ul>
                 </th>
                 <td class="py-4 px-6">
-                    {{ user.email }}
+                    {{ order.total_price }} €
                 </td>
                 <td class="py-4 px-6">
-                    {{ user.role }}
-                </td>
-                <td class="py-4 px-6">
-                    <a href="#" @click="modifyUser(user)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                    {{ order.client.firstName }} {{ order.client.lastName }}
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-<UserFormComponent v-show="showForm" @add="addUser" :user="modifiedUser" />

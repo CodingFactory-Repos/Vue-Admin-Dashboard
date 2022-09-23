@@ -28,6 +28,14 @@ export const useProductStore = defineStore('product', {
         },
         UpdateProduct(data) {
             axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
+        },
+
+        RemoveStock(productList) {
+            productList.forEach(product => {
+                this.products.find(res => res.id === product.product_id).stock -= product.quantity;
+
+                axios.put(this.url + '/' + product.product_id, this.products.find(res => res.id === product.product_id)).then(res => console.log(res))
+            })
         }
     },
 })
