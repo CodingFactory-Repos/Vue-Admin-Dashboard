@@ -43,7 +43,7 @@ export default ({
         orderProduct(){
             this.orderStore.AddOrder(this.shopBar)
             var i =0;
-            for (i;i<this.shopbar.length;i++){
+            for (i;i<this.shopBar.length;i++){
                 this.shopBar[i].price = this.totalprice + this.shopBar[i].price;
             }
         }
