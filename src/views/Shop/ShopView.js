@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
 import ProductCard from "@/components/ProductCardComponents/ProductCardComponents";

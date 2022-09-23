@@ -1,4 +1,7 @@
 import axios from "axios";
+import {mapStores} from "pinia";
+import {useProductStore} from "@/store/product";
+import {useUserStore} from "@/store/user";
 
 export default ({
   name: 'UsersProductView',
@@ -8,11 +11,13 @@ export default ({
             users: []
         }
     },
+    computed :{
+        ...mapStores(useUserStore),
+    },
 
-    mounted() {
-      axios.get('http://10.57.29.194:3000/users')
-        .then(response => {
-            this.users = response.data
-        })
+   async mounted() {
+       await this.userStore.getAllUser();
+       this.users = this.userStore.user
+       console.log(this.users)
     }
 });

@@ -7,6 +7,7 @@ export default {
                 { name: 'Home', link: '/' },
                 { name: 'Admin', link: '/admin' },
                 { name: 'Shop', link: '/shop' },
+                {name : 'Login', link : '/login'}
             ],
         };
     }
