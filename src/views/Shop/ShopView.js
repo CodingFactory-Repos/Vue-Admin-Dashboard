@@ -3,6 +3,7 @@ import {mapStores} from "pinia";
 import {useProductStore} from "@/store/product";
 import ProductCard from "@/components/ProductCardComponents/ProductCardComponents";
 import ShopSideBar from "@/components/ShopSideBar/ShopSideBar.vue";
+import {useOrderStore} from "@/store/order";
 
 
 export default ({
@@ -16,6 +17,7 @@ export default ({
         this.productStore = useProductStore();
 
         return {
+            orderStore : useOrderStore(),
             products: [],
             shopBar: [],
             pages: 0,
@@ -23,7 +25,8 @@ export default ({
         }
     },
     computed: {
-        ...mapStores(useProductStore)
+        ...mapStores(useProductStore),
+        ...mapStores(useOrderStore)
     },
 
     methods: {
@@ -34,6 +37,10 @@ export default ({
 
         addToCart(product) {
             this.shopBar.push(product);
+            console.log(this.shopBar)
+        },
+        orderProduct(){
+            this.orderStore.AddOrder(this.shopBar)
         }
     },
 

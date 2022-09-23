@@ -1,7 +1,8 @@
-<div class="flex flex-wrap justify-evenly">
+<div class="flex flex-wrap justify-evenly" xmlns="http://www.w3.org/1999/html">
     <ShopSideBar v-for="shopElement in shopBar" :key="shopElement.id" :shopBar="shopElement"/>
     <div class="mb-20">
         <br>
+        <button v-if="shopBar.length !== 0" @click="orderProduct">Commander</button>
     </div>
     <ProductCard class="my-5" v-for="product in products" :key="product.id" :product="product" @add-to-cart="addToCart" />
 </div>
