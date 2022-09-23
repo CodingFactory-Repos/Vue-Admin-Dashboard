@@ -15,9 +15,9 @@ export default ({
 
     data() {
         this.productStore = useProductStore();
+        this.orderStore = useOrderStore();
 
         return {
-            orderStore: useOrderStore(),
             products: [],
             shopBar: [],
             pages: 0,
@@ -67,6 +67,7 @@ export default ({
             }
 
             this.orderStore.AddOrder(data)
+            this.productStore.RemoveStock(this.productlist)
             this.shopBar.length = [];
         }
     },
