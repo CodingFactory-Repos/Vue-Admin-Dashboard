@@ -4,6 +4,7 @@ import AdminView from '@/views/Admin/AdminView.vue'
 import ShopView from '@/views/Shop/ShopView.vue'
 import AdminProductView from '@/views/Admin/Products/ProductView.vue'
 import AdminUserView from '@/views/Admin/Users/UserView.vue'
+import OrdersView from '@/views/Admin/Orders/OrderView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
             path: "users/:id?",
             name: "adminUsers",
             component: AdminUserView
+        },
+        {
+            path: "orders/:id?",
+            name: "adminOrders",
+            component: OrdersView
         }
       ]
   },
