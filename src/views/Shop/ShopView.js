@@ -17,12 +17,14 @@ export default ({
         this.productStore = useProductStore();
 
         return {
-            orderStore : useOrderStore(),
+            orderStore: useOrderStore(),
             products: [],
             shopBar: [],
             pages: 0,
             currentPage: 1,
-            totalprice:0,
+            total_price: 0,
+            productlist: []
+
         }
     },
     computed: {
@@ -40,12 +42,31 @@ export default ({
             this.shopBar.push(product);
             console.log(this.shopBar)
         },
-        orderProduct(){
-            this.orderStore.AddOrder(this.shopBar)
-            var i =0;
-            for (i;i<this.shopBar.length;i++){
-                this.shopBar[i].price = this.totalprice + this.shopBar[i].price;
+        orderProduct() {
+            var i = 0;
+            for (i; i < this.shopBar.length; i++) {
+                this.shopBar[i].price = this.total_price + this.shopBar[i].price;
             }
+
+            this.shopBar.forEach(product => {
+                let produ = {
+                    product_id: product.id,
+                    quantity: 1
+                }
+
+
+                this.productlist.push(produ)
+            })
+
+
+            const data = {
+                id: 0,
+                products: this.productlist,
+                total_price: this.total_price,
+                client_id: JSON.parse(localStorage.getItem('token')).id
+            }
+
+            this.orderStore.AddOrder(data)
         }
     },
 

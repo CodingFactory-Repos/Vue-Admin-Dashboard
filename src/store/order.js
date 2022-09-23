@@ -23,8 +23,9 @@ export const useOrderStore = defineStore('order', {
             id.forEach(res => console.log(this.url + '/' + res))
 
         },
-        AddOrder(data) {
-            console.log(data)
+        AddOrder(product) {
+            console.log(product)
+            axios.post(this.url, product).then(res => console.log(res))
         }
     },
 })
