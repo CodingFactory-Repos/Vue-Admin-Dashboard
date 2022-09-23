@@ -22,7 +22,10 @@ export default ({
             shopBar: [],
             pages: 0,
             currentPage: 1,
+
             totalprice:0,
+            productlist : []
+
         }
     },
     computed: {
@@ -41,11 +44,35 @@ export default ({
             console.log(this.shopBar)
         },
         orderProduct(){
+
             this.orderStore.AddOrder(this.shopBar)
             var i =0;
             for (i;i<this.shopbar.length;i++){
                 this.shopBar[i].price = this.totalprice + this.shopBar[i].price;
             }
+
+
+
+
+            let productlist;
+        this.shopBar.forEach(product => {
+            let produ = {
+                product_id : product.id,
+                quantity : 1
+            }
+            this.productlist.push(produ)
+        })
+
+
+
+            const data = {
+                id : 0,
+                products: [productlist],
+                total_price : this.total_price,
+                client_id: 1
+            }
+            this.orderStore.AddOrder(data)
+
         }
     },
 
