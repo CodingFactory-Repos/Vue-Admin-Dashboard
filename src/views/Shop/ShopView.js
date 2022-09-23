@@ -47,6 +47,7 @@ export default ({
             for (i; i < this.shopBar.length; i++) {
                 this.shopBar[i].price = this.total_price + this.shopBar[i].price;
             }
+            console.log(this.total_price)
 
             this.shopBar.forEach(product => {
                 let produ = {
@@ -55,10 +56,9 @@ export default ({
                 }
 
 
-                this.productlist.push(produ)
-            })
-
-
+            this.productlist.push(produ)
+            console.log(this.products)
+        })
             const data = {
                 id: 0,
                 products: this.productlist,

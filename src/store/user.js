@@ -30,6 +30,16 @@ export const useUserStore = defineStore('user', {
             axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
         },
 
+        async getUserById(id){
+
+                const datas = await axios.get(this.url + '/' + id);
+                console.log(datas)
+                return datas.data;
+
+
+
+        },
+
         async checkLogin(email, password) {
             await this.getAllUser();
             let index = this.users.findIndex(user => user.email === email && user.password === password);

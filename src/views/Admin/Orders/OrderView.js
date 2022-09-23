@@ -12,9 +12,12 @@ export default ({
 
     data() {
         return {
+            userStore: useUserStore(),
             orderStore : useOrderStore(),
             orders : [],
-            selectOrders:[]
+            selectOrders:[],
+            user : [],
+            listOrder: []
         }
     },
 
@@ -82,5 +85,15 @@ export default ({
     async mounted() {
         await this.orderStore.getAllOrder();
         this.orders = this.orderStore.orders
+        this.orders.forEach(order => {
+         let user =   this.userStore.getUserById(order.client_id)
+          user.then(res => {
+              this.user = res.data
+             let ord = {
+                  id : order.id,
+                 name_client : this.user.name
+              }
+          })
+        })
     },
 });
