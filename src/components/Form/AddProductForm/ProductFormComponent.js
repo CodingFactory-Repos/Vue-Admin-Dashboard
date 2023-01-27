@@ -32,7 +32,7 @@ export default {
     methods: {
         addProduct() {
             let data = {
-                id: this.id,
+                // id: this.id,
                 image: this.urlPicture,
                 name: this.name,
                 description: this.describe,

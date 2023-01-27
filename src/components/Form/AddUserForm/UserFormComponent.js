@@ -31,7 +31,7 @@ export default {
     methods: {
         addUser() {
             let data = {
-                id: this.id,
+                // id: this.id,
                 firstName: this.firstName,
                 lastName: this.lastName,
                 email: this.email,

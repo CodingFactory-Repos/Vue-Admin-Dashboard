@@ -50,20 +50,18 @@ export default ({
             console.log(this.total_price)
 
             this.shopBar.forEach(product => {
-                let produ = {
-                    product_id: product.id,
-                    quantity: 1
-                }
+                let produ = "/products/" + product.id;
 
 
-            this.productlist.push(produ)
-            console.log(this.products)
-        })
+                this.productlist.push(produ);
+                console.log(this.products)
+            })
+
             const data = {
-                id: 0,
+                // id: 0,
                 products: this.productlist,
                 total_price: this.total_price,
-                client_id: JSON.parse(localStorage.getItem('token')).id
+                client: "/users/" + JSON.parse(localStorage.getItem('token')).id
             }
 
             this.orderStore.AddOrder(data)

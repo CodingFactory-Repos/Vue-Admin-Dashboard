@@ -5,21 +5,21 @@ export const useUserStore = defineStore('user', {
     state: () => {
         return{
             users: [],
-            url : 'https://opaque-five-trader.glitch.me/users'
+            url : 'http://localhost:8888/index.php/users'
         }
 
     },
     actions: {
         async getAllUser() {
             const fetchData = async () => {
-                const datas = await axios.get(this.url);
+                const datas = await axios.get(this.url, {headers: {accept: 'application/json'}});
                 this.users = await datas.data;
 
             };
             await fetchData();
         },
         deleteUser(id) {
-            id.forEach(res => axios.delete(this.url + '/' + res))
+            id.forEach(res => axios.delete(this.url + '/' + res, {headers: {accept: 'application/json'}}))
             id.forEach(res => console.log(this.url + '/' + res))
             //await axios.delete(this.url + id);
         },
@@ -27,17 +27,13 @@ export const useUserStore = defineStore('user', {
             axios.post(this.url, data).then(res => console.log(res))
         },
         UpdateUser(data) {
-            axios.put(this.url + '/' + data.id, data).then(res => console.log(res))
+            axios.put(this.url + '/' + data.id, data, {headers: {accept: 'application/json'}}).then(res => console.log(res))
         },
 
         async getUserById(id){
-
-                const datas = await axios.get(this.url + '/' + id);
+                const datas = await axios.get(this.url + '/' + id, {headers: {accept: 'application/json'}});
                 console.log(datas)
                 return datas.data;
-
-
-
         },
 
         async checkLogin(email, password) {
