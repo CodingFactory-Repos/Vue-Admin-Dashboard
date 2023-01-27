@@ -5,7 +5,7 @@ export const useUserStore = defineStore('user', {
     state: () => {
         return{
             users: [],
-            url : 'http://localhost:8888/index.php/users'
+            url : 'http://192.168.64.15/index.php/users'
         }
 
     },

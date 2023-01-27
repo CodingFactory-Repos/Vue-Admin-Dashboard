@@ -5,7 +5,7 @@ export const useOrderStore = defineStore('order', {
     state: () => {
         return{
             orders: [],
-            url : 'http://localhost:8888/index.php/orders'
+            url : 'http://192.168.64.15/index.php/orders'
         }
 
     },

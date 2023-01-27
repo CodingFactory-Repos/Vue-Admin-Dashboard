@@ -5,7 +5,7 @@ export const useProductStore = defineStore('product', {
     state: () => {
         return{
             products: [],
-            url : 'http://localhost:8888/index.php/products'
+            url : 'http://192.168.64.15/index.php/products'
         }
 
     },
